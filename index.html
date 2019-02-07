@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Aplikacje Casablancaband - Usuwanie polskich znaków oraz akrody</title>
+		<meta charset="UTF-8"/>
+		<meta name="author" content="PP"/>
+		<meta name="robots" content="noindex" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="expires" content="-1" />
+		
+		<meta name="viewport" content="user-scalable=no" />
+		
+		<!-- Biblioteki -->
+		<script src="lib/jquery-3.3.1.min.js"></script>
+		<!--<script src="lib/jquery-linedtextarea.js"></script>-->
+		
+		<link href="polskie_znaki.css" type="text/css" rel="stylesheet"/>
+		<!--<link href="lib/jquery-linedtextarea.css" type="text/css" rel="stylesheet"/>-->
+	</head>
+	
+	<body>
+		<div id="logo_div">
+			<img id="logo" src="img/final_logo.png" alt="Oficjalne logo zespołu Casablanca. Prawa autorskie - Casablancaband Usługi Muzyczne Bartłomiej Kieres, NIP: 637-196-09-50" title="Oficjalne logo zespołu Casablanca. Prawa autorskie - Casablancaband Usługi Muzyczne Bartłomiej Kieres, NIP: 637-196-09-50"/>
+		</div>
+		<h1>Aplikacje Casablancaband - Usuwanie polskich znaków oraz akrody</h1>
+		<br/>
+		
+		<div id="versionAndManual_div">
+			<!-- version info -->
+			<div id="accordion_two" class="accordion_div">
+				<button id="version" class="accordion_control">Version info -> Beta</button>
+				<div class="accordion_content">
+					<ul>
+						<li>Usuwanie polskich znaków</li><p class="thick">&#10004; done</p>
+						<li>Pobieranie do pliku tekstowego</li><p class="thick">&#10004; done</p>
+						<li>Nadawanie nazw pobieranym plikom</li><p class="thick">&#10004; done</p>
+						<li>Automatyczne podwyższanie/obniżanie tonacji</li><p class="thick">&#10004; done</p>
+						<li>Składanie akordów z tekstem</li><p class="thick">&#10004; done</p>
+						<li>Synchronizacja scrollbarów - oba obszary tekstowe mają się przesuwać jednocześnie</li><p class="thick">&#10004; done</p>
+						<li>Może pasek z numerami wierszy powinien być uzupełniany dopiero po przejściu do tego nowego wiersza?</li><p class="thick">do przemyślenia</p>
+						<li>Kotrola poprawności wpisywanych akordów (z zanzaczaniem na czerwono)</li><p class="thick">in progress</p>
+						<li>Przycisk do podglądu .txt (czy tekst i akordy dobrze się składają)</li><p class="thick">in progress</p>
+						<li>Możliwość załadowania gotowego .txt żeby potem zmienić tonację</li><p class="thick">pomysł do przemyślenia</p>
+					</ul>
+				</div>
+			</div>
+
+			<!-- manual & tips -->
+			<div id="accordion_one" class="accordion_div">
+				<button id="manual" class="accordion_control">Manual &amp; Tips</button>
+				<div class="accordion_content">
+					<ul>
+						<li>Przy wpisywaniu akordów BARDZO ważne jest, żeby zwracać uwagę na linijki. Tzn. akordy do danej linijki tekstu muszą znajdować się w tej samej linijce w drugim okienku tekstowym - inaczej plik .txt będzie niepoprawnie poskładany.</li>
+						<li>Nie powinno to być aż takim problemem, bo okienka tekstowe przesuwają się synchroniczne (przetestuj to zobaczysz :)</li>
+						<li>Przyciski ze strzałkami po prawej stronie obszarów tekstowych służą do automatycznego podwyższania lub obniżania tonacji (pół tonu w górę/dół). Akordy muszą być poprawnie wpisane, bo inaczej skrypt zwróci wam "NN" - czyli akord nieznany</li>
+						<li><b>Przyszła funkcjonalnoć &rarr;</b> Skrypt sprawdzający poprawność wpisanych akordów uruchamia się w dwóch przypadkach - wciśnięcie spacji albo kliknięcie gdziekolwiek poza obszar pod akordy.</li>
+						<li>Jeżeli chcesz nadać jakąś nazwę dla ściąganego pliku, to muszisz wpisać ją do okienka pomiędzy przyciskami poniżej obszarów tekstowych (końcówka z rozszeżeniem .txt dodawana jest automatycznie). Inaczej ściągany plik dostanie nazwę "plik.txt"</li>
+						<li>Jeżeli chcesz pobrać plik, kliknij najpierw na opisany odpowiednio przycisk, a potem na link, który pojawi się obok niego</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<br/><br/>
+		<div id="chords_info_div">
+			<h4 id="chords_info">WAŻNE: zapisujemy akordy tylko w ten sposób -> e f fis g gis a b h c cis d dis<br /> (plus małe/wielkie litery oraz ewentualne cyfry, np. gis7).<br />Inaczej automatyczne podwyższanie/obniżanie tonacji nie zadziała poprawnie.<br/><br/>EDIT: polskie znaki będą traktowane jak zwykłe litery - np. "ć" będzie traktowane jak akord "c"</h4>
+		</div>
+		<div id="form_div">
+			<form action="" method="post">
+				<div id="textarea_div">
+					<textarea name="numbers_textarea_one" id="numbers_textarea_one" class="numbers_textarea" cols="2" disabled></textarea>					
+					<textarea name="lyrics_textarea" id="lyrics_textarea" placeholder="Tutaj wklej tekst"></textarea>
+					<textarea name="numbers_textarea_two" id="numbers_textarea_two" class="numbers_textarea" cols="2" disabled></textarea>
+					<textarea name="chords_textarea" id="chords_textarea" placeholder="obszar pod akrody"></textarea>
+					<div id="chords_button_div">
+						<button class="chords_button" id="chords_button_up"> &uarr; </button>
+						<button class="chords_button" id="chords_button_down"> &darr; </button>
+					</div>
+				</div>
+				<br/>
+				
+				<input type="submit" value="usuń polskie znaki" id="polish_letters_submit_1"/>
+				<input type="text" name="textfile_name" id="textfile_name" placeholder="nazwa pobieranego pliku" size="45"></input>
+				<input type="submit" value="usuń znaki i ściągnij plik .txt" id="polish_letters_submit_2" />
+				<a download="plik.txt" id="download_link" href="">Kliknij żeby ściągnąć</a>
+			
+			</form>
+		</div>
+		
+		<div id="announcement_div">
+			<p class="comment">Strona będzie rozwijana w przyszłości, zależnie od potrzeb.<br/> Także jeżeli macie jakieś pomysły co można zautomatyzować, to proszę o kontakt.</p>
+		</div>
+	
+		<!-- Skrypty -->
+		<script type="application/javascript">
+			//$('#lyrics_textarea').linedtextarea({
+				//selectedLine: 1,
+				//selectedClass: 'lineselect'
+			//});
+			
+			//$('#chords_textarea').linedtextarea({
+				//selectedLine: 1,
+				//selectedClass: 'lineselect'
+			//});
+		</script>
+		
+		<script src="scripts/usuwanie_znakow.js"></script>
+		<script src="scripts/make_txt.js"></script>
+		<script src="scripts/chords.js"></script>
+		
+		<script type="application/javascript">
+			(function() {
+				//handler loga (refresh)
+				$('#logo').on('click', function() {
+					location.reload();
+				});
+				//handler paneli rozwijanych
+				$('.accordion_control').on('click', function(e) {
+					$(this)
+						.next('.accordion_content')
+						.not(':animated')
+						.slideToggle(1000);
+				});
+
+				//uzupełnianie numbers_textarea
+				let numbersTextarea = $('.numbers_textarea');
+				numbersTextarea.val('');
+				
+				for(let i=1; i<=100; i++) {
+					numbersTextarea.val(numbersTextarea.val() + i + '\n');
+				}
+			})();
+		</script>
+	</body>
+</html>
